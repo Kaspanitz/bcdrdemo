@@ -24,6 +24,8 @@
 
 ## Availability
 
+Azure Service Level Agreement
+
 [Reliability by service](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
 - [Availability options for Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/availability)
 - [More services...](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
@@ -32,6 +34,29 @@
 
 ### Azure Backup
 [![](https://learn.microsoft.com/en-us/azure/backup/media/backup-overview/azure-backup-overview.png)](https://learn.microsoft.com/en-us/azure/backup/media/backup-overview/azure-backup-overview.png)
+
+#### Security
+- [Soft delete (enhanced in preview)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-enhanced-soft-delete-about)
+	- Deleted data is retained for a specified duration (14-180 days)
+	- [Enhanced soft delete features](https://learn.microsoft.com/en-us/azure/backup/backup-azure-enhanced-soft-delete-about#whats-enhanced-soft-delete)
+- [RBAC](https://learn.microsoft.com/en-us/azure/backup/backup-rbac-rs-vault)
+	- Backup Contributor - Permissions to create and manage backup except deleting Recovery Services vault and giving access to others. "Admin of backup operations"
+	- Backup Operator - Contributor permissions except for removing backup and managing backup policies. Can't perform destructive operations such as stop backup with delete data or remove registration of on-premises resources.
+	- Backup Reader - View all backup management operations. "Monitoring role"
+- [Multi-user authorization](https://learn.microsoft.com/en-us/azure/backup/multi-user-authorization-concept?tabs=backup-vault#how-does-mua-for-backup-work)
+	- Additional protection on Recovery Services vaults and Backup vaults. Azure Backup uses another Azure resource called the Resource Guard to ensure critical operations are performed only with applicable authorization. Resource Guard must be owned by a different user.
+- [Immutable vault (preview)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-immutable-vault-concept?tabs=recovery-services-vault)
+	- Blocks specific operations on the vault and its protected items.
+	- Disable/Enable/Enable and Lock (cannot be disabled)
+	- Restricted operations e.g., Stop protection with delete data, Modify backup policy to reduce retention, Change backup policy to reduce retention
+- Private endpoints
+	- Bring backup service into VNET
+	- [V1](https://learn.microsoft.com/en-us/azure/backup/private-endpoints-overview) and 
+	- [V2](https://learn.microsoft.com/en-us/azure/backup/backup-azure-private-endpoints-concept) experience
+		- Create private endpoints without managed identities.
+		- No private endpoints are created for the blob and queue services.
+		- Use of fewer private IPs.
+		[Key enhancements](https://learn.microsoft.com/en-us/azure/backup/backup-azure-private-endpoints-concept#key-enhancements)
 
 #### [Supported Workloads](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
 1. On-premises
