@@ -1,6 +1,6 @@
 # Business Continuity in Azure
 
-## Key Concepts
+## Availability
 
 - [The Azure Global Infrastructure](https://infrastructuremap.microsoft.com/explore)
 	- [Geographies](https://azure.microsoft.com/en-au/explore/global-infrastructure/geographies/#overview)
@@ -20,14 +20,10 @@
 	- **Zonal services**: A resource can be deployed to a specific, **self-selected availability zone** to achieve more stringent latency or performance requirements. Resiliency is self-architected by replicating applications and data to one or more zones within the region. Resources are aligned to a selected zone. For example, virtual machines, managed disks, or standard IP addresses can be aligned to a same zone, which allows for increased resiliency by having multiple instances of resources deployed to different zones.
 	- **Zone-redundant services**: Resources are replicated or distributed across zones **automatically**. For example, zone-redundant services replicate the data across multiple zones so that a failure in one zone does not affect the high availability of the data. 
 	- **Always-available services:** Always available across all Azure geographies and are resilient to zone-wide outages and region-wide outages. For a complete list of always-available services, also called non-regional services, in Azure, see Products available by region
-
-## Availability
-
-Azure Service Level Agreement
-
-[Reliability by service](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
-- [Availability options for Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/availability)
-- [More services...](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
+- Azure Service Level Agreement
+- [Reliability by service](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
+	- [Availability options for Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/availability)
+	- [More services...](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
 
 ## Disaster Recovery
 
