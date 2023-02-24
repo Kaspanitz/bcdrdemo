@@ -18,10 +18,25 @@
 # [Zone Concepts](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-service-support?view=azuresql#azure-services-with-availability-zone-support)
 
 - **Zonal services**: A resource can be deployed to a specific, **self-selected availability zone** to achieve more stringent latency or performance requirements. Resiliency is self-architected by replicating applications and data to one or more zones within the region. Resources are aligned to a selected zone. For example, virtual machines, managed disks, or standard IP addresses can be aligned to a same zone, which allows for increased resiliency by having multiple instances of resources deployed to different zones.
-- **Zone-redundant services**: Resources are replicated or distributed across zones **automatically**. For example, zone-redundant services replicate the data across multiple zones so that a failure in one zone doesn't affect the high availability of the data. 
+- **Zone-redundant services**: Resources are replicated or distributed across zones **automatically**. For example, zone-redundant services replicate the data across multiple zones so that a failure in one zone does not affect the high availability of the data. 
 - **Always-available services:** Always available across all Azure geographies and are resilient to zone-wide outages and region-wide outages. For a complete list of always-available services, also called non-regional services, in Azure, see Products available by region
 
 # [Reliability by service](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
 
 - [Availability options for Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/availability)
-- [...](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
+- [More services...](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
+
+# Azure Backup
+[![](https://learn.microsoft.com/en-us/azure/backup/media/backup-overview/azure-backup-overview.png)](https://learn.microsoft.com/en-us/azure/backup/media/backup-overview/azure-backup-overview.png)
+
+## [What can you backup?](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
+1. On-premises
+2. Azure VMs
+3. Azure Managed Disks
+4. Azure Files shares
+5. SQL Server in Azure VMs
+6. SAP HANA databases in Azure VMs
+7. Azure Database for PostgreSQL servers
+8. Azure Blobs
+
+# Azure Site Recovery
