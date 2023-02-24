@@ -35,7 +35,7 @@ Azure Service Level Agreement
 [![](https://learn.microsoft.com/en-us/azure/backup/media/backup-overview/azure-backup-overview.png)](https://learn.microsoft.com/en-us/azure/backup/media/backup-overview/azure-backup-overview.png)
 
 #### Vaults
-- [Recovery Services](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview)
+- [Recovery Services Vault](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview)
 	- Configuration information and backup data
 	- [Redundancy](https://learn.microsoft.com/en-us/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy)
 		- LRS, GRS, ZRS
@@ -43,7 +43,7 @@ Azure Service Level Agreement
 		- [Cross Region Restore](https://learn.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#cross-region-restore): Restore Azure VMs in a secondary (paired) region. By enabling this feature at the vault level, you can restore the replicated data in the secondary region any time. This enables you to restore the secondary region data for audit-compliance, and during outage scenarios, without waiting for Azure to declare a disaster (unlike the GRS settings of the vault).
 			- Enabling incurs charges
 			- RPO:36 hours
-- [Backup](https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview)
+- [Backup Vault](https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview)
 	- Houses backup data for certain newer workloads that Azure Backup supports e.g., PostgreSQL
 
 #### Security
@@ -85,66 +85,3 @@ Azure Service Level Agreement
 [(how to use the calculator)](https://learn.microsoft.com/en-us/azure/backup/azure-backup-pricing#estimate-costs-for-backing-up-azure-vms-or-on-premises-servers)
 
 ### Azure Site Recovery
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
