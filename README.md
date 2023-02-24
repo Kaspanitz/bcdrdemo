@@ -39,14 +39,23 @@ Azure Service Level Agreement
 	- Configuration information and backup data
 	- [Redundancy](https://learn.microsoft.com/en-us/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy)
 		- LRS, GRS, ZRS
+		- Storage redundancy is a setting that must be configured before protecting any workloads. Once a workload is protected in Recovery Services vault, the setting is locked and can't be changed.
+		- Storage replication settings for vaults are not relevant for Azure file share backup, because the current solution is snapshot based and no data is transferred to the vault. Snapshots are stored in the same storage account as the backed-up file share.
 	- [Key features](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#key-features) including:
 		- [Cross Region Restore](https://learn.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#cross-region-restore): Restore Azure VMs in a secondary (paired) region. By enabling this feature at the vault level, you can restore the replicated data in the secondary region any time. This enables you to restore the secondary region data for audit-compliance, and during outage scenarios, without waiting for Azure to declare a disaster (unlike the GRS settings of the vault).
 			- Enabling incurs charges
 			- RPO:36 hours
 - [Backup Vault](https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview)
-	- Houses backup data for certain newer workloads that Azure Backup supports e.g., PostgreSQL
+	- Backup data for certain newer workloads that Azure Backup supports e.g., PostgreSQL
+
+#### [Archive Tier](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support)
+- Backup Long-Term Retention points in the archive tier
+- [Support matrix](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support#support-matrix)
 
 #### Security
+- [Vault encryption](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#encryption-settings-in-the-recovery-services-vault)
+	- Platform-managed keys (default)
+	- Customer-managed keys
 - [Soft delete (enhanced in preview)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-enhanced-soft-delete-about)
 	- Deleted data is retained for a specified duration (14-180 days)
 	- [Enhanced soft delete features](https://learn.microsoft.com/en-us/azure/backup/backup-azure-enhanced-soft-delete-about#whats-enhanced-soft-delete)
