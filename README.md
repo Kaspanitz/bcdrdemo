@@ -1,5 +1,7 @@
 # Business Continuity in Azure
+Architectures are not necessarily highly available or recoverable just because they are in the cloud
 
+[Shared responsibility](https://learn.microsoft.com/en-us/azure/reliability/overview#shared-responsibility)
 ## Availability
 
 - [The Azure Global Infrastructure](https://infrastructuremap.microsoft.com/explore)
@@ -8,7 +10,6 @@
 
 
 - [Azure Reliability](https://learn.microsoft.com/en-us/azure/reliability/?view=azuresql "Azure Reliability")
-	- [Shared responsibility](https://learn.microsoft.com/en-us/azure/reliability/overview#shared-responsibility): Architectures are not automatically 100% available or recoverable just because they are in the cloud
 	- [Region Pairs](https://learn.microsoft.com/en-us/azure/reliability/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies)
 	- [Availability Sets](https://learn.microsoft.com/en-us/azure/virtual-machines/availability-set-overview)
 	- [Availability Zones](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview#availability-zones)
@@ -81,15 +82,19 @@
 		- Use of fewer private IPs.
 		[Key enhancements](https://learn.microsoft.com/en-us/azure/backup/backup-azure-private-endpoints-concept#key-enhancements)
 
-#### [Supported Workloads](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
-1. On-premises
-2. Azure VMs
-3. Azure Managed Disks
-4. Azure Files shares
-5. SQL Server in Azure VMs
-6. SAP HANA databases in Azure VMs
-7. Azure Database for PostgreSQL servers
-8. Azure Blobs
+#### [Supported Workloads (8)](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
+- [On-premises (3 methods)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)
+	- Windows machine with MARS agent
+	- [DPM/MABS](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm)
+		- [DPM (Server, System Center License, Tape/Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-dpm-introduction)
+		- [MABS (Server, No System Center License, Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-protection-matrix)
+- Azure VMs
+- Azure Managed Disks
+- Azure Files shares
+- SQL Server in Azure VMs
+- SAP HANA databases in Azure VMs
+- Azure Database for PostgreSQL servers
+- Azure Blobs
 
 #### Links
 - [Azure Pricing Calculator](https://azure.microsoft.com/en-au/pricing/calculator/Backup%20demo)
