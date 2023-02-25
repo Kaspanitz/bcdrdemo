@@ -1,5 +1,5 @@
 # Business Continuity in Azure
-Architectures are not necessarily highly available or recoverable just because they are in the cloud
+Architectures are not automatically highly available (or recoverable) just because they are in the cloud
 
 [Shared responsibility](https://learn.microsoft.com/en-us/azure/reliability/overview#shared-responsibility)
 ## Availability
@@ -31,8 +31,11 @@ Architectures are not necessarily highly available or recoverable just because t
 ## Disaster Recovery
 
 ### [Backup Center](https://learn.microsoft.com/en-us/azure/backup/backup-center-overview)
-- Unified management experience to govern, monitor, operate, and analyze **backups** at scale.
-- At-scale monitoring and management capabilities for **Azure Site Recovery**
+- Unified management experience
+- [Govern](https://learn.microsoft.com/en-us/azure/backup/backup-center-govern-environment), [monitor](https://learn.microsoft.com/en-us/azure/backup/backup-center-monitor-operate), [report](https://learn.microsoft.com/en-us/azure/backup/backup-center-obtain-insights), and operate **Azure Backups** at scale 
+	- across various dimensions: job status, policies, backup instances
+	- across various scopes: vaults, resource groups, subscriptions, regions, and tenants (using Azure Lighthouse) 
+- Monitor and manage **Azure Site Recovery** at scale
 - [Support matrix](https://learn.microsoft.com/en-us/azure/backup/backup-center-support-matrix)
 
 ### [Azure Backup](https://learn.microsoft.com/en-us/azure/backup/)
@@ -45,21 +48,20 @@ Architectures are not necessarily highly available or recoverable just because t
 		- LRS, GRS, ZRS
 		- Storage redundancy is a setting that must be configured before protecting any workloads. Once a workload is protected in Recovery Services vault, the setting is locked and can't be changed.
 		- Storage replication settings for vaults are not relevant for Azure file share backup, because the current solution is snapshot based and no data is transferred to the vault. Snapshots are stored in the same storage account as the backed-up file share.
-	- [Key features](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#key-features) including:
+	- [Key features](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#key-features), including:
 		- [Cross Region Restore](https://learn.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#cross-region-restore): Restore Azure VMs in a secondary (paired) region. By enabling this feature at the vault level, you can restore the replicated data in the secondary region any time. This enables you to restore the secondary region data for audit-compliance, and during outage scenarios, without waiting for Azure to declare a disaster (unlike the GRS settings of the vault).
 			- Enabling incurs charges
 			- RPO:36 hours
 - [Backup Vault](https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview)
 	- Backup data for certain newer workloads that Azure Backup supports e.g., PostgreSQL
 
-#### [Archive Tier](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support)
-- Backup Long-Term Retention points in the archive tier
-- [Support matrix](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support#support-matrix)
-
 #### Security
-- [Vault encryption](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#encryption-settings-in-the-recovery-services-vault)
-	- Platform-managed keys (default)
-	- Customer-managed keys
+- [Encryption](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#encryption-settings-in-the-recovery-services-vault) of data in transit and at rest
+	- Within Azure, data in transit between Azure storage and the vault is protected by HTTPS. This data remains within the Azure network.
+	- Backup data
+		- Platform-managed keys (by default)
+		- Customer-managed keys
+	- [Azure VMs OS/data disks encrypted with Azure Disk Encryption (ADE) is supported](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)
 - [Soft delete (enhanced in preview)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-enhanced-soft-delete-about)
 	- Deleted data is retained for a specified duration (14-180 days)
 	- [Enhanced soft delete features](https://learn.microsoft.com/en-us/azure/backup/backup-azure-enhanced-soft-delete-about#whats-enhanced-soft-delete)
@@ -85,16 +87,46 @@ Architectures are not necessarily highly available or recoverable just because t
 #### [Supported Workloads (8)](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
 - [On-premises (3 methods)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)
 	- Windows machine with MARS agent
+		- Can also use for Azure VMs e.g., to get 3/day backup to vault instead of 1/day RPO of 8 hours vs. 24 hours
 	- [DPM/MABS](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm)
 		- [DPM (Server, System Center License, Tape/Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-dpm-introduction)
 		- [MABS (Server, No System Center License, Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-protection-matrix)
 - [Azure VMs](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-iaas)
-- Azure Managed Disks
-- Azure Files shares
-- SQL Server in Azure VMs
-- SAP HANA databases in Azure VMs
-- Azure Database for PostgreSQL servers
-- Azure Blobs
+	- RPO 24 hours (1/day backup to vault)
+- [Azure Managed Disks](https://learn.microsoft.com/en-us/azure/backup/disk-backup-support-matrix)
+- [Azure Files shares](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)
+	- Full share restore
+	- Item level restore
+	- Snapshot-based
+- [SQL Server in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sql-support-matrix)
+	- Full 1/day scheduled
+	- Full 3/day on-demand (hard limit 9, retry failed)
+- [SAP HANA databases in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sap-hana-backup-support-matrix)
+- [Azure Database for PostgreSQL servers](https://learn.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql-support-matrix)
+- [Azure Blobs](https://learn.microsoft.com/en-us/azure/backup/blob-backup-support-matrix)
+
+
+#### Tiers (2)
+- Standard
+- [Archive](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support)
+	- Backup Long-Term Retention points in the archive tier
+	- [Support matrix](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support#support-matrix)
+
+#### Azure Policy
+- Compliance: [Auto-Enable Backup on VM creation](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup)
+- [Supported VM SKUs](https://learn.microsoft.com/en-us/azure/backup/backup-azure-policy-supported-skus)
+- [Policy 1 - Configure backup on VMs without a given tag to an existing recovery services vault in the same location](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-1---configure-backup-on-vms-without-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location)
+- [Policy 2 - Configure backup on VMs with a given tag to an existing recovery services vault in the same location](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-2---configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location)
+- [Policy 3 - Configure backup on VMs without a given tag to a new recovery services vault with a default policy](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-3---configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy)
+- [Policy 4 - Configure backup on VMs with a given tag to a new recovery services vault with a default policy](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-4---configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy)
+- [Supported scenarios](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#supported-scenarios)
+
+#### [Backup Policy](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#backup-policy-considerations)
+1. [Schedule (when?)](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#schedule-considerations)
+2. [Retention (how long?)](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#retention-considerations)
+	- Short-term (daily)
+	- Long-term (weekly, monthly, yearly)
+	- On-demand (not scheduled via backup policy)
 
 #### Pricing
 - [Azure Backup Pricing](https://azure.microsoft.com/en-us/pricing/details/backup/)
