@@ -88,7 +88,7 @@ Architectures are not necessarily highly available or recoverable just because t
 	- [DPM/MABS](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm)
 		- [DPM (Server, System Center License, Tape/Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-dpm-introduction)
 		- [MABS (Server, No System Center License, Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-protection-matrix)
-- Azure VMs
+- [Azure VMs](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-iaas)
 - Azure Managed Disks
 - Azure Files shares
 - SQL Server in Azure VMs
@@ -96,7 +96,8 @@ Architectures are not necessarily highly available or recoverable just because t
 - Azure Database for PostgreSQL servers
 - Azure Blobs
 
-#### Links
+#### Pricing
+- [Azure Backup Pricing](https://azure.microsoft.com/en-us/pricing/details/backup/)
 - [Azure Pricing Calculator](https://azure.microsoft.com/en-au/pricing/calculator/Backup%20demo)
 - [Azure Backup Detailed Estimates](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdownload.microsoft.com%2Fdownload%2F0%2Fb%2F7%2F0b7c4140-24b4-4eff-9b2b-64ecee97d667%2FAzureBackupDetailedEstimatesV9.1.xlsx&data=05%7C01%7Cjohanv%40microsoft.com%7Ce86eb91501514ab12a5408db157a54a7%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638127387941003210%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000%7C%7C%7C&sdata=UVsZ9MHbdAxW4GpgkG%2FfPGhYeDuhFQGe5JIDP%2Fv7Bxs%3D&reserved=0 "Azure Backup Detailed Estimates")
 [(how to use the calculator)](https://learn.microsoft.com/en-us/azure/backup/azure-backup-pricing#estimate-costs-for-backing-up-azure-vms-or-on-premises-servers)
