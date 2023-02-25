@@ -41,7 +41,7 @@ Architectures are not automatically highly available (or recoverable) just becau
 ### [Azure Backup](https://learn.microsoft.com/en-us/azure/backup/)
 ![](https://learn.microsoft.com/en-us/azure/backup/media/guidance-best-practices/azure-backup-architecture.png)
 
-#### Vaults
+#### Vaults (2)
 - [Recovery Services Vault](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview)
 	- Configuration information and backup data
 	- [Redundancy](https://learn.microsoft.com/en-us/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy)
@@ -55,7 +55,7 @@ Architectures are not automatically highly available (or recoverable) just becau
 - [Backup Vault](https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview)
 	- Backup data for certain newer workloads that Azure Backup supports e.g., PostgreSQL
 
-#### Security
+#### Security (6)
 - [Encryption](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#encryption-settings-in-the-recovery-services-vault) of data in transit and at rest
 	- Within Azure, data in transit between Azure storage and the vault is protected by HTTPS. This data remains within the Azure network.
 	- Backup data
@@ -113,14 +113,15 @@ Architectures are not automatically highly available (or recoverable) just becau
 	- Backup Long-Term Retention points in the archive tier
 	- [Support matrix](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support#support-matrix)
 
-#### Azure Policy
+#### Azure Policy (4)
 - Compliance: [Auto-Enable Backup on VM creation](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup)
 - [Supported VM SKUs](https://learn.microsoft.com/en-us/azure/backup/backup-azure-policy-supported-skus)
 - [Supported scenarios](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#supported-scenarios)
-- [Policy 1 - Configure backup on VMs without a given tag to an existing recovery services vault in the same location](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-1---configure-backup-on-vms-without-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location)
-- [Policy 2 - Configure backup on VMs with a given tag to an existing recovery services vault in the same location](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-2---configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location)
-- [Policy 3 - Configure backup on VMs without a given tag to a new recovery services vault with a default policy](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-3---configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy)
-- [Policy 4 - Configure backup on VMs with a given tag to a new recovery services vault with a default policy](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-4---configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy)
+- Built-in Policies
+	- [Policy 1 - Configure backup on VMs without a given tag to an existing recovery services vault in the same location](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-1---configure-backup-on-vms-without-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location)
+	- [Policy 2 - Configure backup on VMs with a given tag to an existing recovery services vault in the same location](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-2---configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location)
+	- [Policy 3 - Configure backup on VMs without a given tag to a new recovery services vault with a default policy](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-3---configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy)
+	- [Policy 4 - Configure backup on VMs with a given tag to a new recovery services vault with a default policy](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-4---configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy)
 
 #### [Backup Policy](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#backup-policy-considerations)
 1. [Schedule (when?)](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#schedule-considerations)
