@@ -32,7 +32,8 @@
 	- **Zone-redundant services**: Resources are replicated or distributed across zones **automatically**. For example, zone-redundant services replicate the data across multiple zones so that a failure in one zone does not affect the high availability of the data. 
 	- **Always-available services:** Always available across all Azure geographies and are resilient to zone-wide outages and region-wide outages. Also known as non-regional services e.g. Azure Active Directory.
 	
-- Azure Service Level Agreement
+- [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1)
+Microsoft commitment for uptime and connectivity for Microsoft Online Services
 
 - [Reliability by service](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
 	- [Availability options for Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/availability)
