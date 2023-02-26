@@ -1,7 +1,17 @@
 # Business Continuity in Azure
-Architectures are not automatically highly available (or recoverable) just because they are in the cloud
+> Applications do not necessarily have the availability (or recoverability) that we need, just because they are in the cloud. We do have more options to build resilience into our applications though.
 
 [Shared responsibility](https://learn.microsoft.com/en-us/azure/reliability/overview#shared-responsibility)
+
+## Agenda
+- Availability
+	- Azure Infrastructure
+	- Azure Reliability
+- Disaster Recovery
+	- Backup Center
+	- Azure Backup
+	- Azure Site Recovery
+
 ## Availability
 
 - [The Azure Global Infrastructure](https://infrastructuremap.microsoft.com/explore)
