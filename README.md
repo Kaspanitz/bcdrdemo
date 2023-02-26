@@ -63,7 +63,7 @@ Microsoft commitment for uptime and connectivity for Microsoft Online Services
 		- [Cross Region Restore](https://learn.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#cross-region-restore): Restore Azure VMs in a secondary (paired) region. By enabling this feature at the vault level, you can restore the replicated data in the secondary region any time. This enables you to restore the secondary region data for audit-compliance, and during outage scenarios, without waiting for Azure to declare a disaster (unlike the GRS settings of the vault).
 			- Enabling incurs charges
 			- RPO:36 hours
-			- Cross-region backup (i.e., back up a resource to a recovery services vault in a different region) is not supported for any Azure workload. 
+		- **Cross-region backup** (i.e., back up a resource to a recovery services vault in a different region) is not supported for any Azure workload. 
 - [Backup Vault](https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview)
 	- Backup data for certain newer workloads that Azure Backup supports e.g., PostgreSQL
 
