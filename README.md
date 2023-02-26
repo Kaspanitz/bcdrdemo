@@ -1,5 +1,5 @@
 # Business Continuity in Azure
-> Applications do not necessarily have the availability (or recoverability) that we need, just because they are in the cloud. We do have more options to build resilience into our applications though.
+*Applications do not necessarily have the availability (or recoverability) that we need, just because they are in the cloud. We do have more options to build resilience into our applications though.*
 
 [Shared responsibility](https://learn.microsoft.com/en-us/azure/reliability/overview#shared-responsibility)
 
@@ -17,8 +17,6 @@
 - [The Azure Global Infrastructure](https://infrastructuremap.microsoft.com/explore)
 	- [Geographies](https://azure.microsoft.com/en-au/explore/global-infrastructure/geographies/#overview)
 	- [Regions](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview#regions)
-
-
 - [Azure Reliability](https://learn.microsoft.com/en-us/azure/reliability/?view=azuresql "Azure Reliability")
 	- [Region Pairs](https://learn.microsoft.com/en-us/azure/reliability/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies)
 	- [Availability Sets](https://learn.microsoft.com/en-us/azure/virtual-machines/availability-set-overview)
@@ -26,15 +24,12 @@
 	- [Subscriptions](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview#availability-zones) and [checkZonePeers](https://learn.microsoft.com/en-us/rest/api/resources/subscriptions/check-zone-peers)
 	- [Infographic](https://azure.microsoft.com/mediahandler/files/resourcefiles/infographic-reliability-with-microsoft-azure/InfographicRC2.pdf)
 	
-
 - [Zone Definitions](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-service-support?view=azuresql#azure-services-with-availability-zone-support)
 	- **Zonal services**: A resource can be deployed to a specific, **self-selected availability zone** to achieve more stringent latency or performance requirements. Resiliency is self-architected by replicating applications and data to one or more zones within the region. Resources are aligned to a selected zone. For example, virtual machines, managed disks, or standard IP addresses can be aligned to a same zone, which allows for increased resiliency by having multiple instances of resources deployed to different zones.
 	- **Zone-redundant services**: Resources are replicated or distributed across zones **automatically**. For example, zone-redundant services replicate the data across multiple zones so that a failure in one zone does not affect the high availability of the data. 
 	- **Always-available services:** Always available across all Azure geographies and are resilient to zone-wide outages and region-wide outages. Also known as non-regional services e.g. Azure Active Directory.
-	
 - [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1)
-Microsoft commitment for uptime and connectivity for Microsoft Online Services
-
+*Microsoft commitment for uptime and connectivity for Microsoft Online Services*
 - [Reliability by service](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
 	- [Availability options for Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/availability)
 	- [More services...](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
@@ -56,16 +51,16 @@ Microsoft commitment for uptime and connectivity for Microsoft Online Services
 - [Recovery Services Vault](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview)
 	- Configuration information and backup data
 	- [Redundancy](https://learn.microsoft.com/en-us/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy)
-		- LRS, GRS (6 copies across 2 paired regions), ZRS
+		- **LRS**, **GRS** (6 copies across 2 paired regions), **ZRS**
 		- Must be configured before protecting any workloads. Once a workload is protected in Recovery Services vault, the setting is locked and can't be changed.
-		- Storage replication settings for vaults are not relevant for Azure file share backup, because the current solution is snapshot based and no data is transferred to the vault. Snapshots are stored in the same storage account as the backed-up file share.
+		*Storage replication settings for vaults are not relevant for Azure file share backup, because the current solution is snapshot based and no data is transferred to the vault. Snapshots are stored in the same storage account as the backed-up file share.*
 	- [Key features](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#key-features), including:
 		- [Cross Region Restore](https://learn.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#cross-region-restore): Restore Azure VMs in a secondary (paired) region. By enabling this feature at the vault level, you can restore the replicated data in the secondary region any time. This enables you to restore the secondary region data for audit-compliance, and during outage scenarios, without waiting for Azure to declare a disaster (unlike the GRS settings of the vault).
-			- Enabling incurs charges
-			- RPO:36 hours
-		- **Cross-region backup** (i.e., back up a resource to a recovery services vault in a different region) is not supported for any Azure workload. 
+			- Must be enabled and incurs charges
+			- `RPO: 36 hours`
+		- **Cross-region backup** (i.e. back up a resource to a recovery services vault in a different region) is not supported for any Azure workload. 
 - [Backup Vault](https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview)
-	- Backup data for certain newer workloads that Azure Backup supports e.g., PostgreSQL
+	- Backup data for certain newer Azure Backup workloads e.g. PostgreSQL
 
 #### Security (6)
 - [Encryption](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#encryption-settings-in-the-recovery-services-vault) of data in transit and at rest
@@ -78,9 +73,9 @@ Microsoft commitment for uptime and connectivity for Microsoft Online Services
 	- Deleted data is retained for a specified duration (14-180 days)
 	- [Enhanced soft delete features](https://learn.microsoft.com/en-us/azure/backup/backup-azure-enhanced-soft-delete-about#whats-enhanced-soft-delete) e.g., Always-on
 - [RBAC](https://learn.microsoft.com/en-us/azure/backup/backup-rbac-rs-vault)
-	- Backup Contributor - Permissions to create and manage backup except deleting Recovery Services vault and giving access to others. "Admin of backup operations"
-	- Backup Operator - Contributor permissions except for removing backup and managing backup policies. Can't perform destructive operations such as stop backup with delete data or remove registration of on-premises resources.
-	- Backup Reader - View all backup management operations. "Monitoring role"
+	- **Backup Contributor** - Permissions to create and manage backup except deleting Recovery Services vault and giving access to others. "Admin of backup operations"
+	- **Backup Operator** - Contributor permissions except for removing backup and managing backup policies. Can't perform destructive operations such as stop backup with delete data or remove registration of on-premises resources.
+	- **Backup Reader** - View all backup management operations. "Monitoring role"
 - [Multi-user authorization](https://learn.microsoft.com/en-us/azure/backup/multi-user-authorization-concept?tabs=backup-vault#how-does-mua-for-backup-work)
 	- Additional protection on Recovery Services vaults and Backup vaults. Azure Backup uses another Azure resource called the Resource Guard to ensure critical operations are performed only with applicable authorization. Resource Guard must be owned by a different user.
 [![](https://github.com/Kaspanitz/bcdr/blob/main/images/MUA.png)](https://github.com/Kaspanitz/bcdr/blob/main/images/MUA.png)
@@ -100,20 +95,20 @@ Microsoft commitment for uptime and connectivity for Microsoft Online Services
 #### [Supported Workloads (8+)](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
 - [On-premises (3 methods)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)
 	- Windows machine with MARS agent
-		- Can also use for Azure VMs e.g., to get 3/day backup to vault instead of 1/day RPO of 8 hours vs. 24 hours
+		- Can also use for Azure VMs e.g., to get three backups/day to vault instead of one backup/day `RPO of 8 hours vs. 24 hours`
 	- [DPM/MABS](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm)
 		- [DPM (Server, System Center License, Tape/Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-dpm-introduction)
 		- [MABS (Server, No System Center License, Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-protection-matrix)
 - [Azure VMs](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-iaas)
-	- RPO 24 hours (1/day backup to vault)
+	- `RPO: 24 hours` (one backup/day)
 - [Azure Managed Disks](https://learn.microsoft.com/en-us/azure/backup/disk-backup-support-matrix)
 - [Azure Files shares](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)
 	- Full share restore
 	- Item level restore
 	- Snapshot-based
 - [SQL Server in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sql-support-matrix)
-	- Full 1/day scheduled
-	- Full 3/day on-demand (hard limit 9, retry failed)
+	- Full backup one/day scheduled
+	- Full backup three/day on-demand (hard limit of 9 to retry failed)
 - [SAP HANA databases in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sap-hana-backup-support-matrix)
 - [Azure Database for PostgreSQL servers](https://learn.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql-support-matrix)
 - [Azure Blobs](https://learn.microsoft.com/en-us/azure/backup/blob-backup-support-matrix)
