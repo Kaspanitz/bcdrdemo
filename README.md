@@ -71,6 +71,8 @@
 		- **Cross-region backup** (i.e. back up a resource to a recovery services vault in a different region) is not supported for any Azure workload. 
 - [Backup Vault](https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview)
 	- Backup data for certain newer Azure Backup workloads e.g. Azure Disks, Azure Blobs, PostgreSQL
+	- Redundancy
+		- **LRS**, **ZRS**, **GRS**
 
 #### Security (6)
 - [Encryption](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#encryption-settings-in-the-recovery-services-vault) of data in transit and at rest
@@ -130,8 +132,13 @@
 [![](https://learn.microsoft.com/en-us/azure/backup/media/backup-azure-vms/instant-rp-flow.png)](https://learn.microsoft.com/en-us/azure/backup/media/backup-azure-vms/instant-rp-flow.png)
 			- One snapshot per day is transferred to vault
 			- `RPO: 4 hours` (up to six per day)
-			- `Retention: Select 1 to 30 days` (7 by default)
+			- `Snapshot Retention: Select 1 to 17 days` (hourly frequency)
+			- `Snapshot Retention: Select 1 to 30 days` (daily frequency)
 			- Does not support Ultra SSD
+		- `Daily Backup Point Retention: 7-9999 days`
+		- `Weekly Backup Point Retention: 1-5163 days`
+		- `Monthly Backup Point Retention: 1-1188 days`
+		- `Yearly Backup Point Retention: 1-99 days`
 		- Restore
 			- Create a VM
 			- Restore disk (attach to existing or new VM)
@@ -139,6 +146,14 @@
 			- Restore item level (files/folders)
 			- Cross region restore
 - **[Azure Managed Disks](https://learn.microsoft.com/en-us/azure/backup/disk-backup-support-matrix)**
+	- Agentless
+	- Incremental snapshots
+	- `RPO: 1 hour`
+	- `Retention: 1-282 days (7 by default)`
+		Choose between first successful backup per day or week
+	- Multiple backups per day (every 1, 2, 4, 6, 8, or 12 hours)
+	- Restore
+		- Only supports Alternate-Location Recovery (ALR) currently (Original-Location Recovery (OLR) is not supported)
 - **[Azure Files shares](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)**
 	- Full share restore
 	- Item level restore
