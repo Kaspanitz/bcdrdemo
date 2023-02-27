@@ -171,16 +171,27 @@
 	- Shared disk support
 	- Restore
 		- Only supports Alternate-Location Recovery (ALR) currently (Original-Location Recovery (OLR) is not supported)
+- **[SQL Server in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sql-support-matrix)**
+	- `Full backup one/day (at most) scheduled`
+	- `Full backup three/day on-demand` (hard limit of 9 to retry failed)
+	- `RPO: 15 minutes` (transaction log backups)
+	- `Transaction Log Retention: 7-35 days`
+	- `Daily Full Backup Retention: 7-9999 days`
+	- `Weekly Full Backup Retention: 1-5163 days`
+	- `Monthly Full Backup Retention: 1-1188 days`
+	- `Yearly Full Backup Retention: 1-99 days`
+	- Database level
+	- Backup can also be configured at server level with option to restore individual databases.
+	- Native SQL backup compression support
+	- Always On Availability Group awareness
+	- Also consider [SQL Server Managed Backup](https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-ver16) and Manual Backup 
 - **[Azure Files shares](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)**
 	- Full share restore
 	- Item level restore
 	- Snapshot-based
-- **[SQL Server in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sql-support-matrix)**
-	- Full backup one/day scheduled
-	- Full backup three/day on-demand (hard limit of 9 to retry failed)
+- **[Azure Blobs](https://learn.microsoft.com/en-us/azure/backup/blob-backup-support-matrix)**
 - **[SAP HANA databases in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sap-hana-backup-support-matrix)**
 - **[Azure Database for PostgreSQL servers](https://learn.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql-support-matrix)**
-- **[Azure Blobs](https://learn.microsoft.com/en-us/azure/backup/blob-backup-support-matrix)**
 - **[[Private preview: Azure Kubernetes Service (AKS) Backup]](https://azure.microsoft.com/en-au/updates/private-preview-aks-backup/)**
 
 #### Azure Policy (4)
