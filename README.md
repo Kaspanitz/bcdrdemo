@@ -12,10 +12,10 @@
 [Shared responsibility](https://learn.microsoft.com/en-us/azure/reliability/overview#shared-responsibility)
 
 ## Agenda
-- Availability
+- [Availability](availability.md)
 	- Azure Infrastructure
 	- Azure Reliability
 - Disaster Recovery
-	- Backup Center
-	- Azure Backup
-	- Azure Site Recovery
+	- [Backup Center](drbackupcenter.md)
+	- [Azure Backup](drbackup.md)
+	- [Azure Site Recovery](drreplicate.md)
