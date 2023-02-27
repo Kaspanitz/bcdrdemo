@@ -83,7 +83,7 @@
 	- [Azure VMs OS/data disks encrypted with Azure Disk Encryption (ADE) is supported](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)
 - [Soft delete (enhanced in preview)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-enhanced-soft-delete-about)
 	- Deleted data is retained for a specified duration (14-180 days)
-	- [Enhanced soft delete features](https://learn.microsoft.com/en-us/azure/backup/backup-azure-enhanced-soft-delete-about#whats-enhanced-soft-delete) e.g., Always-on
+	- [Enhanced soft delete features](https://learn.microsoft.com/en-us/azure/backup/backup-azure-enhanced-soft-delete-about#whats-enhanced-soft-delete) e.g. Always-on
 - [RBAC](https://learn.microsoft.com/en-us/azure/backup/backup-rbac-rs-vault)
 	- **Backup Contributor** - Permissions to create and manage backup except deleting Recovery Services vault and giving access to others. "Admin of backup operations"
 	- **Backup Operator** - Contributor permissions except for removing backup and managing backup policies. Can't perform destructive operations such as stop backup with delete data or remove registration of on-premises resources.
@@ -103,6 +103,21 @@
 		- No private endpoints are created for the blob and queue services.
 		- Use of fewer private IPs.
 		[Key enhancements](https://learn.microsoft.com/en-us/azure/backup/backup-azure-private-endpoints-concept#key-enhancements)
+
+#### Tiers (2)
+- Standard
+- [Archive](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support)
+	- Backup Long-Term (monthly or yearly) retention points in the archive tier
+	- [Support matrix](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support#support-matrix)
+
+#### [Backup Policy](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#backup-policy-considerations)
+1. [Schedule (when?)](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#schedule-considerations)
+2. [Retention (how long?)](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#retention-considerations)
+	- Short-term (daily, weekly)
+	- Long-term (monthly, yearly)
+	- On-demand (not scheduled via backup policy)
+
+[Configure backup policy to automate vault-archive tier for Azure VMs, SQL Server/SAP HANA in Azure VMs]( https://azure.microsoft.com/en-au/updates/general-availability-smart-tiering-to-vaultarchive-tier-for-azure-backup/)
 
 #### [Supported Workloads (8+)](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
 - **[On-premises (3 options)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)**
@@ -168,13 +183,6 @@
 - **[Azure Blobs](https://learn.microsoft.com/en-us/azure/backup/blob-backup-support-matrix)**
 - **[[Private preview: Azure Kubernetes Service (AKS) Backup]](https://azure.microsoft.com/en-au/updates/private-preview-aks-backup/)**
 
-
-#### Tiers (2)
-- Standard
-- [Archive](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support)
-	- Backup Long-Term (monthly or yearly) retention points in the archive tier
-	- [Support matrix](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support#support-matrix)
-
 #### Azure Policy (4)
 - Compliance: [Auto-Enable Backup on VM creation](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup)
 - [Supported VM SKUs](https://learn.microsoft.com/en-us/azure/backup/backup-azure-policy-supported-skus)
@@ -184,15 +192,6 @@
 	- [Policy 2 - Configure backup on VMs with a given tag to an existing recovery services vault in the same location](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-2---configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location)
 	- [Policy 3 - Configure backup on VMs without a given tag to a new recovery services vault with a default policy](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-3---configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy)
 	- [Policy 4 - Configure backup on VMs with a given tag to a new recovery services vault with a default policy](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-4---configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy)
-
-#### [Backup Policy](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#backup-policy-considerations)
-1. [Schedule (when?)](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#schedule-considerations)
-2. [Retention (how long?)](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#retention-considerations)
-	- Short-term (daily, weekly)
-	- Long-term (monthly, yearly)
-	- On-demand (not scheduled via backup policy)
-
-[Configure backup policy to automate vault-archive tier for Azure VMs, SQL Server/SAP HANA in Azure VMs]( https://azure.microsoft.com/en-au/updates/general-availability-smart-tiering-to-vaultarchive-tier-for-azure-backup/)
 
 #### Useful Links
 - [What is newly GA, in private/public preview?](https://azure.microsoft.com/en-au/updates/?query=backup&Page=2)
