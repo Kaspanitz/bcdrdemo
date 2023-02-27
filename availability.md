@@ -17,3 +17,6 @@
 - [Reliability by service](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
 - [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1) *The Microsoft commitment for uptime and connectivity for Microsoft Online Services*
 	- [Composite SLAs](https://learn.microsoft.com/en-us/azure/architecture/framework/resiliency/business-metrics#composite-slas)
+- [FTA Reliability Workbook](https://github.com/Azure/reliability-workbook)
+	- Discover reliability configuration at scale
+	- Reliability score
