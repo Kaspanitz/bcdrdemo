@@ -38,7 +38,7 @@
 		- Shared crash-consistent and app-consistent recovery points
 		- Single VM failover is not allowed
 		- Up to 16 VMs
-	- Recovery points
+	- [Recovery points](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-common-questions#how-far-back-can-i-recover)
 		- Recovery points are prunded after two hours, saving one point per hour
 		- Last two hours have 24 crash-consistent (2 hours*60 minutes/5 minutes) and two app-consistent points (1/hour) available
 		- `Retention: 15 days (managed disk), 3 days (unmanaged disk)` ([configurable, and cost consideration](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-common-questions#how-does-the-pruning-of-recovery-points-happen))
