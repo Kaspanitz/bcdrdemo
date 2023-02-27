@@ -136,7 +136,7 @@
 	- Native SQL backup compression support
 	- [Backup Always On Availability Groups](https://learn.microsoft.com/en-us/azure/backup/backup-sql-server-on-availability-groups)
 	- Also consider [SQL Server Managed Backup](https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-ver16) and Manual Backup 
-- **[Azure Files shares](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)**
+- **[Azure Files](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)**
 	- Snapshot-based
 	- Hourly or Daily Frequency
 	- `RPO: 4 hours` (hourly frequency)
