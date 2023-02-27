@@ -106,7 +106,16 @@
 		- [DPM (Server, System Center License, Tape/Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-dpm-introduction)
 		- [MABS (Server, No System Center License, Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-protection-matrix)
 - [Azure VMs](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-iaas)
-	- `RPO: 24 hours` (one backup/day)
+	- Policies: 
+		- Standard
+			- `RPO: 24 hours` (once a day)
+			- [Trusted Azure VM](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch) not supported
+			- Will not support newer Azure offerings
+		- Enhanced
+			- Snapshot based (Instant Restore)
+			- One snapshot per day is transferred to vault
+			- `RPO: 4 hours` (up to six per day)
+			- Does not support Ultra SSD
 - [Azure Managed Disks](https://learn.microsoft.com/en-us/azure/backup/disk-backup-support-matrix)
 - [Azure Files shares](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)
 	- Full share restore
