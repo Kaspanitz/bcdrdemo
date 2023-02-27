@@ -13,6 +13,9 @@
 	- Azure Site Recovery
 
 ## Availability
+`Service-level agreement:` An availability target representing a commitment around performance and availability of an application.
+
+[Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1) *The Microsoft commitment for uptime and connectivity for Microsoft Online Services*
 
 - [The Azure Global Infrastructure](https://infrastructuremap.microsoft.com/explore)
 	- [Geographies](https://azure.microsoft.com/en-au/explore/global-infrastructure/geographies/#overview)
@@ -28,13 +31,13 @@
 	- **Zonal services**: A resource can be deployed to a specific, **self-selected availability zone** to achieve more stringent latency or performance requirements. Resiliency is self-architected by replicating applications and data to one or more zones within the region. Resources are aligned to a selected zone. For example, virtual machines, managed disks, or standard IP addresses can be aligned to a same zone, which allows for increased resiliency by having multiple instances of resources deployed to different zones.
 	- **Zone-redundant services**: Resources are replicated or distributed across zones **automatically**. For example, zone-redundant services replicate the data across multiple zones so that a failure in one zone does not affect the high availability of the data. 
 	- **Always-available services:** Always available across all Azure geographies and are resilient to zone-wide outages and region-wide outages. Also known as non-regional services e.g. Azure Active Directory.
-- [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1)
-*Microsoft commitment for uptime and connectivity for Microsoft Online Services*
 - [Reliability by service](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
-	- [Availability options for Azure VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/availability)
-	- [More services...](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
+
 
 ## Disaster Recovery
+`Recovery Point Objective (RPO):` How much data can be lost?
+`Recovery Time Objective (RTO):` How long can a service be down? The **expected** recovery time.
+`Maximum Tolerable Downtime (MTD):` Total downtime before significant impact to the business. The **required** recovery time.
 
 ### [Backup Center](https://learn.microsoft.com/en-us/azure/backup/backup-center-overview)
 - Unified management experience
@@ -93,7 +96,7 @@
 		[Key enhancements](https://learn.microsoft.com/en-us/azure/backup/backup-azure-private-endpoints-concept#key-enhancements)
 
 #### [Supported Workloads (8+)](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
-- [On-premises (3 methods)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)
+- [On-premises (3 options)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)
 	- Windows machine with MARS agent
 		- Can also use for Azure VMs e.g., to get three backups/day to vault instead of one backup/day `RPO of 8 hours vs. 24 hours`
 	- [DPM/MABS](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm)
@@ -134,8 +137,8 @@
 #### [Backup Policy](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#backup-policy-considerations)
 1. [Schedule (when?)](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#schedule-considerations)
 2. [Retention (how long?)](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#retention-considerations)
-	- Short-term (daily)
-	- Long-term (weekly, monthly, yearly)
+	- Short-term (daily, weekly)
+	- Long-term (monthly, yearly)
 	- On-demand (not scheduled via backup policy)
 
 [Configure backup policy to automate vault-archive tier for Azure VMs, SQL Server/SAP HANA in Azure VMs]( https://azure.microsoft.com/en-au/updates/general-availability-smart-tiering-to-vaultarchive-tier-for-azure-backup/)
