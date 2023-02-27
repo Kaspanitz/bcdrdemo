@@ -1,4 +1,6 @@
 # Business Continuity in Azure
+`FTA Preview`
+
 *Applications do not necessarily have the availability (or recoverability) that we need, just because they are in the cloud. We do have more options to build resilience into our applications though.*
 
 [![](https://learn.microsoft.com/en-us/azure/reliability/media/shared-responsibility-model.png)](https://learn.microsoft.com/en-us/azure/reliability/media/shared-responsibility-model.png)
@@ -57,7 +59,7 @@
 - [Recovery Services Vault](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview)
 	- Configuration information and backup data
 	- [Redundancy](https://learn.microsoft.com/en-us/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy)
-		- **LRS**, **GRS** (6 copies across 2 paired regions), **ZRS**
+		- **LRS** (low cost option recommended when Azure vault is not the primary/only store), **GRS** (6 copies across 2 paired regions), **ZRS**
 		- Must be configured before protecting any workloads. Once a workload is protected in Recovery Services vault, the setting is locked and can't be changed.
 		*Storage replication settings for vaults are not relevant for Azure file share backup, because the current solution is snapshot based and no data is transferred to the vault. Snapshots are stored in the same storage account as the backed-up file share.*
 	- [Key features](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#key-features), including:
@@ -101,20 +103,32 @@
 #### [Supported Workloads (8+)](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
 - [On-premises (3 options)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)
 	- Windows machine with MARS agent
-		- Can also use for Azure VMs e.g., to get three backups/day to vault instead of one backup/day `RPO of 8 hours vs. 24 hours`
+		- Can also use for Azure VMs e.g. to get three backups/day to vault instead of one backup/day `RPO of 8 hours vs. 24 hours`
 	- [DPM/MABS](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm)
 		- [DPM (Server, System Center License, Tape/Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-dpm-introduction)
 		- [MABS (Server, No System Center License, Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-protection-matrix)
 - [Azure VMs](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-iaas)
+	- Backup process takes a snapshot, data is transferred to a Recovery Services vault with no impact on production workloads
+	- Snapshot levels of [consistency](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction#snapshot-consistency):
+		- App-consistent
+		- File system-consistent
+		- Crash-consistent
+	- [Quiesce applications using pre-post scripts](https://learn.microsoft.com/en-us/azure/backup/backup-azure-linux-database-consistent-enhanced-pre-post)
+	- [Selective disk backup/restore](https://learn.microsoft.com/en-us/azure/backup/selective-disk-backup-restore)
+	- [Backup encrypted Azure VM](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)
+		- Storage service encryption (SSE) with platform-managed or customer-managed keys
+		- Azure Disk Encryption (ADE)
 	- Policies: 
 		- Standard
 			- `RPO: 24 hours` (once a day)
 			- [Trusted Azure VM](https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch) not supported
 			- Will not support newer Azure offerings
 		- Enhanced
-			- Snapshot based (Instant Restore)
+			- Snapshot based (Instant Restore) reduces backup and restore times
+[![](https://learn.microsoft.com/en-us/azure/backup/media/backup-azure-vms/instant-rp-flow.png)](https://learn.microsoft.com/en-us/azure/backup/media/backup-azure-vms/instant-rp-flow.png)
 			- One snapshot per day is transferred to vault
 			- `RPO: 4 hours` (up to six per day)
+			- `Retention: Select 1 to 30 days` (7 by default)
 			- Does not support Ultra SSD
 - [Azure Managed Disks](https://learn.microsoft.com/en-us/azure/backup/disk-backup-support-matrix)
 - [Azure Files shares](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)
@@ -133,7 +147,7 @@
 #### Tiers (2)
 - Standard
 - [Archive](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support)
-	- Backup Long-Term Retention points in the archive tier
+	- Backup Long-Term (monthly or yearly) retention points in the archive tier
 	- [Support matrix](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support#support-matrix)
 
 #### Azure Policy (4)
