@@ -14,8 +14,8 @@
 - [Azure Stack to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/azure-stack-site-recovery)
 - [Hyper-V to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-manage-network-interfaces-on-premises-to-azure)
 - [Proximity Placement Groups](https://learn.microsoft.com/en-us/azure/site-recovery/how-to-enable-replication-proximity-placement-groups)
-	- PPGs address latency-sensitive workloads
-	- Best effort to fail over and fail back VMs into a proximity placement group
+	- Latency-sensitive workloads
+	- Best effort to fail over and fail back VMs into a PPG
 - [On-premises Apps](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-workload)
 	- App-agnostic replication for any workload running on a supported machine
 - Site-to-Site Disaster Recovery ([VMware](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-secondary-disaster-recovery) and [Hyper-V](https://learn.microsoft.com/en-us/azure/site-recovery/site-to-site-deprecation))
