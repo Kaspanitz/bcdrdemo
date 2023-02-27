@@ -70,7 +70,7 @@
 			- `RPO: 36 hours`
 		- **Cross-region backup** (i.e. back up a resource to a recovery services vault in a different region) is not supported for any Azure workload. 
 - [Backup Vault](https://learn.microsoft.com/en-us/azure/backup/backup-vault-overview)
-	- Backup data for certain newer Azure Backup workloads e.g. PostgreSQL
+	- Backup data for certain newer Azure Backup workloads e.g. Azure Disks, Azure Blobs, PostgreSQL
 
 #### Security (6)
 - [Encryption](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#encryption-settings-in-the-recovery-services-vault) of data in transit and at rest
@@ -103,13 +103,13 @@
 		[Key enhancements](https://learn.microsoft.com/en-us/azure/backup/backup-azure-private-endpoints-concept#key-enhancements)
 
 #### [Supported Workloads (8+)](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
-- [On-premises (3 options)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)
+- **[On-premises (3 options)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)**
 	- Windows machine with MARS agent
 		- Can also use for Azure VMs e.g. to get three backups/day to vault instead of one backup/day `RPO of 8 hours vs. 24 hours`
 	- [DPM/MABS](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm)
 		- [DPM (Server, System Center License, Tape/Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-dpm-introduction)
 		- [MABS (Server, No System Center License, Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-protection-matrix)
-- [Azure VMs](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-iaas)
+- **[Azure VMs](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-iaas)**
 	- Backup process takes a snapshot, data is transferred to a Recovery Services vault with no impact on production workloads
 	- Snapshot levels of [consistency](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction#snapshot-consistency):
 		- App-consistent
@@ -132,18 +132,24 @@
 			- `RPO: 4 hours` (up to six per day)
 			- `Retention: Select 1 to 30 days` (7 by default)
 			- Does not support Ultra SSD
-- [Azure Managed Disks](https://learn.microsoft.com/en-us/azure/backup/disk-backup-support-matrix)
-- [Azure Files shares](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)
+		- Restore
+			- Create a VM
+			- Restore disk (attach to existing or new VM)
+			- Replace VM disk
+			- Restore item level (files/folders)
+			- Cross region restore
+- **[Azure Managed Disks](https://learn.microsoft.com/en-us/azure/backup/disk-backup-support-matrix)**
+- **[Azure Files shares](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)**
 	- Full share restore
 	- Item level restore
 	- Snapshot-based
-- [SQL Server in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sql-support-matrix)
+- **[SQL Server in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sql-support-matrix)**
 	- Full backup one/day scheduled
 	- Full backup three/day on-demand (hard limit of 9 to retry failed)
-- [SAP HANA databases in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sap-hana-backup-support-matrix)
-- [Azure Database for PostgreSQL servers](https://learn.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql-support-matrix)
-- [Azure Blobs](https://learn.microsoft.com/en-us/azure/backup/blob-backup-support-matrix)
-- [[Private preview: Azure Kubernetes Service (AKS) Backup]](https://azure.microsoft.com/en-au/updates/private-preview-aks-backup/)
+- **[SAP HANA databases in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sap-hana-backup-support-matrix)**
+- **[Azure Database for PostgreSQL servers](https://learn.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql-support-matrix)**
+- **[Azure Blobs](https://learn.microsoft.com/en-us/azure/backup/blob-backup-support-matrix)**
+- **[[Private preview: Azure Kubernetes Service (AKS) Backup]](https://azure.microsoft.com/en-au/updates/private-preview-aks-backup/)**
 
 
 #### Tiers (2)
