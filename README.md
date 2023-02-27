@@ -146,12 +146,14 @@
 			- Restore item level (files/folders)
 			- Cross region restore
 - **[Azure Managed Disks](https://learn.microsoft.com/en-us/azure/backup/disk-backup-support-matrix)**
-	- Agentless
+	- Agentless (useful in highly secure environments where agents cannot be deployed)
 	- Incremental snapshots
 	- `RPO: 1 hour`
 	- `Retention: 1-282 days (7 by default)`
 		Choose between first successful backup per day or week
 	- Multiple backups per day (every 1, 2, 4, 6, 8, or 12 hours)
+	- Ultra and Premium SSD v2 incremental snapshots are in public preview (as at 25 and 23 January 2023 respectively)
+	- Shared disk support
 	- Restore
 		- Only supports Alternate-Location Recovery (ALR) currently (Original-Location Recovery (OLR) is not supported)
 - **[Azure Files shares](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)**
