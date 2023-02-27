@@ -5,7 +5,10 @@
 
 [![](https://learn.microsoft.com/en-us/azure/reliability/media/shared-responsibility-model.png)](https://learn.microsoft.com/en-us/azure/reliability/media/shared-responsibility-model.png)
 
-*Many of the offerings Azure provides require customers to set up disaster recovery in multiple regions and are not the responsibility of Microsoft.*
+*Many of the offerings Azure provides require customers to architect for availability, and set up disaster recovery in multiple regions and are not the responsibility of Microsoft.*
+
+*The many availability and disaster recovery options provide customers with the flexibility to choose an implementation that aligns to their application criticality requirements and budget considerations.*
+
 [Shared responsibility](https://learn.microsoft.com/en-us/azure/reliability/overview#shared-responsibility)
 
 ## Agenda
@@ -19,8 +22,6 @@
 
 ## Availability
 `Service-level agreement:` An availability target representing a commitment around performance and availability of an application.
-
-[Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1) *The Microsoft commitment for uptime and connectivity for Microsoft Online Services*
 
 - [The Azure Global Infrastructure](https://infrastructuremap.microsoft.com/explore)
 	- [Geographies](https://azure.microsoft.com/en-au/explore/global-infrastructure/geographies/#overview)
@@ -37,7 +38,8 @@
 	- **Zone-redundant services**: Resources are replicated or distributed across zones **automatically**. For example, zone-redundant services replicate the data across multiple zones so that a failure in one zone does not affect the high availability of the data. 
 	- **Always-available services:** Always available across all Azure geographies and are resilient to zone-wide outages and region-wide outages. Also known as non-regional services e.g. Azure Active Directory.
 - [Reliability by service](https://learn.microsoft.com/en-us/azure/reliability/reliability-guidance-overview?view=azuresql)
-
+- [Service Level Agreements (SLA) for Online Services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1) *The Microsoft commitment for uptime and connectivity for Microsoft Online Services*
+	- [Composite SLAs](https://learn.microsoft.com/en-us/azure/architecture/framework/resiliency/business-metrics#composite-slas)
 
 ## Disaster Recovery
 `Recovery Point Objective (RPO):` How much data can be lost?
