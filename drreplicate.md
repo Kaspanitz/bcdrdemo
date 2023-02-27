@@ -42,16 +42,22 @@
 		- Recovery points are prunded after two hours, saving one point per hour
 		- Last two hours have 24 crash-consistent (2 hours*60 minutes/5 minutes) and two app-consistent points (1/hour) available
 		- `Retention: 15 days (managed disk), 3 days (unmanaged disk)` ([configurable, and cost consideration](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-common-questions#how-does-the-pruning-of-recovery-points-happen))
-- No-impact DR drill
-- Recovery points up to 15 days
-- Point and click Graphical UI
-- Centralized monitoring and alerting
-- Automation support
-	- ARM template support for declarative and repeatable creation of Azure resources
-	- PowerShell support to setup vaults and policies using scripts
+- [Automation](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-powershell)
+	- Bicep/ARM/PowerShell for creation of Azure resources
+	- PowerShell to test failover
+	- [Azure Automation Runbooks](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-runbook-automation) to automate tasks outside and inside recovered VMs as part of a recovery plan
 	- Azure Policy integration for governance
+- [Recovery Plans](https://learn.microsoft.com/en-us/azure/site-recovery/recovery-plan-overview)
+	- Model app around its dependencies
+	- Test failovers and calculate RTO
+	- Parallelism and sequencing of VM start up
+	- Add manual actions to validate recovered application aspects that cannot be automated
+	- Up to 100 protected items/plan
+	- Machines can be referenced in multiple recovery plans, in which subsequent plans skip the deployment/startup of a machine if it was previously deployed using another recovery plan
+[![](https://learn.microsoft.com/en-us/azure/site-recovery/media/recovery-plan-overview/rp.png)](https://learn.microsoft.com/en-us/azure/site-recovery/media/recovery-plan-overview/rp.png)
+[![](https://learn.microsoft.com/en-us/azure/site-recovery/media/recovery-plan-overview/rptest.png)](https://learn.microsoft.com/en-us/azure/site-recovery/media/recovery-plan-overview/rptest.png)
+[Example video](https://youtu.be/1KUVdtvGqw8)
 - Auto upgrade of ASR agents
-- `RPO: 'minutes'`
 - SLA-backed RTO
 - Continuous replication
 - Hot-Add Disk
@@ -62,12 +68,6 @@
 	- Purchase capacity in DR region  and failover to that capacity
 	- Create new or use existing Capacity Reservation Group (CRG)
 	- Assign a CRG to VMs. On failover, new VM will be created in the assigned CRG
-- Recovery Plans
-	- Model app around its dependencies
-	- Test failovers and calculate RTO
-	- Parallelism and sequencing of VM start up
-	- Azure Automation runbooks to automate tasks outside and inside recovered VMs
-	- Add manual actions to validate recovered application aspects that cannot be automated
 - Deployment Planner
 	- Profile churn on VMs with no production impact
 	- Estimate network bandwidth for initial and delta replication
