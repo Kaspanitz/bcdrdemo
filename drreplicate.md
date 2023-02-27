@@ -23,20 +23,25 @@
 
 #### Features
 - Consistency
-	- Crash
-		- Snapshot of all data on disk
-		- Every 5 minutes
-		- Up to 15 days 
-		- For app servers
-	- Application
-		- Snapshot of data on disk + data in memory
-		- Configurable: Every 1-12 hours
-		- Up to 15 days
+	- [Crash](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-common-questions#whats-a-crash-consistent-recovery-point)
+		- On-disk data (no data from in-memory)
+		- `RPO: 5 minutes` (automatically)
+		- Appropriate for app servers, file servers
+		- Not for databases servers
+	- [Application](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-common-questions#whats-an-application-consistent-recovery-point)
+		- On-disk + data in memory
+		- `RPO: 1-12 hours` (configurable)
 		- For databases
-	- Multi VM
+	- [Multi-VM](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency)
 		- Consistent recovery points across multiple VMs
 		- Replication group of all enabled VMs created
-		- Shared crash & app consistent recovery points for all VMs in a group
+		- Shared crash-consistent and app-consistent recovery points
+		- Single VM failover is not allowed
+		- Up to 16 VMs
+	- Recovery points
+		- Recovery points are prunded after two hours, saving one point per hour
+		- Last two hours have 24 crash-consistent (2 hours*60 minutes/5 minutes) and two app-consistent points (1/hour) available
+		- `Retention: 15 days (managed disk), 3 days (unmanaged disk)` ([configurable, and cost consideration](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-common-questions#how-does-the-pruning-of-recovery-points-happen))
 - No-impact DR drill
 - Recovery points up to 15 days
 - Point and click Graphical UI
