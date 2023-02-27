@@ -19,3 +19,4 @@
 	- [Backup Center](drbackupcenter.md)
 	- [Azure Backup](drbackup.md)
 	- [Azure Site Recovery](drreplicate.md)
+- BCDR Guided Journey with Templates (coming soon)
