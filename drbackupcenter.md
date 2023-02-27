@@ -12,3 +12,5 @@
 	- across various scopes: vaults, resource groups, subscriptions, regions, and tenants (using Azure Lighthouse) 
 - Monitor and manage **Azure Site Recovery** at scale
 - [Support matrix](https://learn.microsoft.com/en-us/azure/backup/backup-center-support-matrix)
+
+[![](https://learn.microsoft.com/en-us/azure/backup/media/backup-center-community/backup-center-community-hub.png)](https://learn.microsoft.com/en-us/azure/backup/media/backup-center-community/backup-center-community-hub.png)

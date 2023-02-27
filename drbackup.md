@@ -12,7 +12,7 @@
 - [Recovery Services Vault](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview)
 	- Configuration information and backup data
 	- [Redundancy](https://learn.microsoft.com/en-us/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy)
-		- **LRS** (low cost option recommended when Azure vault is not the primary/only store), **GRS** (6 copies across 2 paired regions), **ZRS**
+		- **LRS** (low cost option recommended when Azure vault is not the primary/only store), **GRS** (6 copies across 2 paired regions), **ZRS** (high data durability along with data residency)
 		- Must be configured before protecting any workloads. Once a workload is protected in Recovery Services vault, the setting is locked and can't be changed.
 		*Storage replication settings for vaults are not relevant for Azure file share backup, because the current solution is snapshot based and no data is transferred to the vault. Snapshots are stored in the same storage account as the backed-up file share.*
 	- [Key features](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#key-features), including:
@@ -134,13 +134,35 @@
 	- Database level
 	- Backup can also be configured at server level with option to restore individual databases.
 	- Native SQL backup compression support
-	- Always On Availability Group awareness
+	- [Backup Always On Availability Groups](https://learn.microsoft.com/en-us/azure/backup/backup-sql-server-on-availability-groups)
 	- Also consider [SQL Server Managed Backup](https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-ver16) and Manual Backup 
 - **[Azure Files shares](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)**
-	- Full share restore
-	- Item level restore
 	- Snapshot-based
+	- Hourly or Daily Frequency
+	- `RPO: 4 hours` (hourly frequency)
+	- `RPO: 24 hours` (daily frequency)
+	- Hourly frequency, every 4 hours schedule (refer to portal for 6, 8 and 12 hour schedules)
+		- `Daily Backup Point Retention: 1-49 days`
+		- `Weekly Backup Point Retention: 1-200 days`
+		- `Monthly Backup Point Retention: 1-120 days`
+		- `Yearly Backup Point Retention: 1-10 days`
+	- Daily frequency
+		- `Daily Backup Point Retention: 1-200 days`
+		- `Weekly Backup Point Retention: 1-200 days`
+		- `Monthly Backup Point Retention: 1-120 days`
+		- `Yearly Backup Point Retention: 1-10 days`
+	- Restore
+		- Full share restore
+		- Item level restore
 - **[Azure Blobs](https://learn.microsoft.com/en-us/azure/backup/blob-backup-support-matrix)**
+	- Backup Center integration for single pane of glass
+	- Managed, local data protection
+	- Protect block blobs from data loss scenarios like corruptions, blob deletions, and accidental storage account deletion
+	- Data stored locally within source storage account itself
+	- Recover to a selected point in time
+	- Continuous backup, no need to schedule
+	- `Retention: 1-360 days or 1-51 weeks or 1-11 months`
+	- [Point-in-time restore](https://learn.microsoft.com/en-us/azure/storage/blobs/point-in-time-restore-overview)
 - **[SAP HANA databases in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sap-hana-backup-support-matrix)**
 - **[Azure Database for PostgreSQL servers](https://learn.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql-support-matrix)**
 - **[[Private preview: Azure Kubernetes Service (AKS) Backup]](https://azure.microsoft.com/en-au/updates/private-preview-aks-backup/)**
