@@ -15,8 +15,10 @@
 [![](https://learn.microsoft.com/en-us/azure/site-recovery/media/vmware-azure-architecture-modernized/architecture-modernized.png#lightbox)](https://learn.microsoft.com/en-us/azure/site-recovery/media/vmware-azure-architecture-modernized/architecture-modernized.png#lightbox)
 	- [Support matrix](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-azure-support-matrix)
 - [Physical to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-large-deployment)
+    - [Support matrix](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-azure-support-matrix)
+
 [![](https://learn.microsoft.com/en-us/azure/site-recovery/media/physical-azure-architecture/v2a-architecture-henry.png)](https://learn.microsoft.com/en-us/azure/site-recovery/media/physical-azure-architecture/v2a-architecture-henry.png)
-	- [Support matrix](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-azure-support-matrix)
+
 - [Azure Stack to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/azure-stack-site-recovery)
 - [Hyper-V to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-manage-network-interfaces-on-premises-to-azure)
 	- [Support matrix](https://learn.microsoft.com/en-us/azure/site-recovery/hyper-v-azure-support-matrix)
