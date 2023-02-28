@@ -9,10 +9,19 @@
 
 #### Scenarios (9)
 - [Azure to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-how-to-enable-replication)
+[![](https://learn.microsoft.com/en-us/azure/site-recovery/media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)](https://learn.microsoft.com/en-us/azure/site-recovery/media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
+	- [Support matrix](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-support-matrix)
 - [VMware to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-large-deployment)
+[![](https://learn.microsoft.com/en-us/azure/site-recovery/media/vmware-azure-architecture-modernized/architecture-modernized.png#lightbox)](https://learn.microsoft.com/en-us/azure/site-recovery/media/vmware-azure-architecture-modernized/architecture-modernized.png#lightbox)
+	- [Support matrix](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-azure-support-matrix)
 - [Physical to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-large-deployment)
+[![](https://learn.microsoft.com/en-us/azure/site-recovery/media/physical-azure-architecture/v2a-architecture-henry.png)](https://learn.microsoft.com/en-us/azure/site-recovery/media/physical-azure-architecture/v2a-architecture-henry.png)
+	- [Support matrix](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-azure-support-matrix)
 - [Azure Stack to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/azure-stack-site-recovery)
 - [Hyper-V to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-manage-network-interfaces-on-premises-to-azure)
+[![](https://learn.microsoft.com/en-us/azure/site-recovery/media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)](https://learn.microsoft.com/en-us/azure/site-recovery/media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
+[![](https://learn.microsoft.com/en-us/azure/site-recovery/media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)](https://learn.microsoft.com/en-us/azure/site-recovery/media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+	- [Support matrix](https://learn.microsoft.com/en-us/azure/site-recovery/hyper-v-azure-support-matrix)
 - [Proximity Placement Groups](https://learn.microsoft.com/en-us/azure/site-recovery/how-to-enable-replication-proximity-placement-groups)
 	- Latency-sensitive workloads
 	- Best effort to fail over and fail back VMs into a PPG
