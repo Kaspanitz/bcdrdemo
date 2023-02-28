@@ -7,7 +7,7 @@
 
 ### Azure Site Recovery
 
-#### Scenarios (8)
+#### Scenarios (9)
 - [Azure to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-how-to-enable-replication)
 - [VMware to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-large-deployment)
 - [Physical to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-large-deployment)
@@ -18,10 +18,40 @@
 	- Best effort to fail over and fail back VMs into a PPG
 - [On-premises Apps](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-workload)
 	- App-agnostic replication for any workload running on a supported machine
+	- E.g. AD, DNS, SQL, SharePoint, Dynamics AX, RDS, Exchange, SAP, File Server, IIS, Citrix XenApp and XenDesktop, etc
+- [Zone to Zone DR](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)
+	- Metro DR strategy
+	- Compliance requirements for data residency
+	- If deploying VMs in a highly available availability zone configuration is not desired - cost tradeoff
+	- Where a paired region is not in the same jurisdiction e.g. Southeast Asia
+	- Reduces networking complexity (use the same VNET, etc)
 - Site-to-Site Disaster Recovery ([VMware](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-secondary-disaster-recovery) and [Hyper-V](https://learn.microsoft.com/en-us/azure/site-recovery/site-to-site-deprecation))
 	- Deprecated
-
+	
 #### Features
+- [Automation](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-powershell)
+	- Bicep/ARM/PowerShell for creation of Azure resources
+	- PowerShell to test failover
+	- [Azure Automation Runbooks](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-runbook-automation) to automate tasks outside and inside recovered VMs as part of a recovery plan
+	- [Azure Policy](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-how-to-enable-policy) integration for governance and at scale operations
+- [Deployment Planner](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-deployment-planner)
+	- Command-line tool for both Hyper-V to Azure and VMware to Azure disaster recovery scenarios
+	- Profile churn on VMs with no production impact
+	- Estimate network bandwidth for initial and delta replication
+	- Identify Azure storage type (standard or premium) required for VMs
+	- Estimate number of standard and premium storage accounts
+	- Estimate number of Configuration and Process Servers 
+	- VM eligibility assessment based on number of disks, size and IOPS
+	- Excel report
+	[![](https://learn.microsoft.com/en-us/azure/site-recovery/media/site-recovery-vmware-deployment-planner-analyze-report/recommendations-v2a.png)](https://learn.microsoft.com/en-us/azure/site-recovery/media/site-recovery-vmware-deployment-planner-analyze-report/recommendations-v2a.png)
+- [Private Link](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-how-to-enable-replication-private-endpoints)
+	- Access Site Recovery Vault and Storage Account over Private Endpoints in your network
+	- Replication traffic stays on Microsoft backbone
+	- Meet compliance requirements
+- [Encryption](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-faq#does-site-recovery-encrypt-replication-)
+	- In-transit and at-rest
+	- Azure Disk Encryption (ADE) enabled VMs supported for replication
+	- Customer Managed Keys (CMK) enabled managed disk VMs supported
 - Consistency
 	- [Crash](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-common-questions#whats-a-crash-consistent-recovery-point)
 		- On-disk data (no data from in-memory)
@@ -42,11 +72,6 @@
 		- Recovery points are prunded after two hours, saving one point per hour
 		- Last two hours have 24 crash-consistent (2 hours*60 minutes/5 minutes) and two app-consistent points (1/hour) available
 		- `Retention: 15 days (managed disk), 3 days (unmanaged disk)` ([configurable, and cost consideration](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-common-questions#how-does-the-pruning-of-recovery-points-happen))
-- [Automation](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-powershell)
-	- Bicep/ARM/PowerShell for creation of Azure resources
-	- PowerShell to test failover
-	- [Azure Automation Runbooks](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-runbook-automation) to automate tasks outside and inside recovered VMs as part of a recovery plan
-	- Azure Policy integration for governance
 - [Recovery Plans](https://learn.microsoft.com/en-us/azure/site-recovery/recovery-plan-overview)
 	- Model app around its dependencies
 	- Test failovers and calculate RTO
@@ -57,36 +82,23 @@
 [![](https://learn.microsoft.com/en-us/azure/site-recovery/media/recovery-plan-overview/rp.png)](https://learn.microsoft.com/en-us/azure/site-recovery/media/recovery-plan-overview/rp.png)
 [![](https://learn.microsoft.com/en-us/azure/site-recovery/media/recovery-plan-overview/rptest.png)](https://learn.microsoft.com/en-us/azure/site-recovery/media/recovery-plan-overview/rptest.png)
 [Example video](https://youtu.be/1KUVdtvGqw8)
-- Auto upgrade of ASR agents
-- SLA-backed RTO
-- Continuous replication
-- Hot-Add Disk
-	- Exclude undesired
-	- Include new disks on a machine that is already replicating
-- Compression
-- Capacity Reservation
+- [Capacity Reservation](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-common-questions#how-do-we-ensure-capacity-in-the-target-region)
 	- Purchase capacity in DR region  and failover to that capacity
 	- Create new or use existing Capacity Reservation Group (CRG)
 	- Assign a CRG to VMs. On failover, new VM will be created in the assigned CRG
-- Deployment Planner
-	- Profile churn on VMs with no production impact
-	- Estimate network bandwidth for initial and delta replication
-	- Identify Azure storage type (standard or premium) required for VMs
-	- Estimate number of standard and premium storage accounts
-	- Estimate number of Configuration and Process Servers 
-	- VM eligibility assessment based on number of disks, size and IOPS
-- Private Link
-	- Access Site Recovery Vault and Storage Account over Private Endpoints in your network
-	- Replication traffic stays on Microsoft backbone
-	- Secure connectivity from on-premises to Azure
-	- Meet compliance requirements
-- Encryption
-	- In-transit and at-rest
-	- Azure Disk Encryption (ADE) enabled VMs supported for replication
-	- Customer Managed Keys (CMK) enabled managed disk VMs supported
-- Zone to Zone DR
-	- Metro strategy
-	- Compliance requirements of data residency
+- Hot-Add Disk
+	- Exclude undesired
+	- Include new disks on a machine that is already replicating
+- IP Addresses
+	- [Public IP addresses](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-common-questions#can-i-keep-a-public-ip-address-after--failover) cannot be retained after a failover
+		- [Set up public IP addresses after failover](https://learn.microsoft.com/en-us/azure/site-recovery/concepts-public-ip-address-with-site-recovery)
+			- Traffic Manager to reduce RTO
+	- [Private IP addresses](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-common-questions#can-i-keep-a-private-ip-address-after-failover) can be retained
+		- ASR tries to provision the same IP address for the target VM for source VMs with static IP addresses
+		- [Retaining IP address examples](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-retain-ip-azure-vm-failover)
+		- [Use a different IP address](https://learn.microsoft.com/en-us/azure/site-recovery/hyper-v-vmm-networking#use-a-different-ip-address)
+			- Drawback: DNS and cache entries may need to be updated resulting in downtime - use short TTL values to mitigate
+			- Can be useful to do subnet-level failovers i.e. subset of application - [example](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-retain-ip-azure-vm-failover#resources-in-azure-isolated-app-failover)
 
 #### Best Practices
 - Generate csv file with target details like SKU, resource group, target network
