@@ -74,9 +74,11 @@
 - **[On-premises (3 options)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)**
 	- Windows machine with MARS agent
 		- Can also use for Azure VMs e.g. to get three backups/day to vault instead of one backup/day `RPO of 8 hours vs. 24 hours`
+		- Linux is not supported
 	- [DPM/MABS](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm)
 		- [DPM (Server, System Center License, Tape/Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-dpm-introduction)
 		- [MABS (Server, No System Center License, Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-protection-matrix)
+		- Linux support
 	- [Data backed up from Azure Backup Agent, DPM, and Azure Backup Server is compressed and encrypted before being transferred. With compression and encryption applied, the data in the vault is 30-40% smaller](https://learn.microsoft.com/en-us/azure/backup/backup-azure-backup-faq#why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup-)
 - **[Azure VMs](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-iaas)**
 	- Backup process takes a snapshot, data is transferred to a Recovery Services vault with no impact on production workloads
@@ -136,6 +138,9 @@
 	- Backup can also be configured at server level with option to restore individual databases.
 	- Native SQL backup compression support
 	- [Backup Always On Availability Groups](https://learn.microsoft.com/en-us/azure/backup/backup-sql-server-on-availability-groups)
+		- [Basic Always On AG](https://learn.microsoft.com/en-us/sql/database-engine/availability-groups/windows/basic-availability-groups-always-on-availability-groups?view=sql-server-ver16) is not supported
+		- Considerations apply for the region, subscription, primary and secondary replicas
+		- How various types of backup (full, differential, etc) will be handled, if there is a failover to a secondary node, needs to be considered
 	- Also consider [SQL Server Managed Backup](https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-ver16) and Manual Backup 
 - **[Azure Files](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)**
 	- Snapshot-based
