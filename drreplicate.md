@@ -22,7 +22,6 @@
 
 [![](https://learn.microsoft.com/en-us/azure/site-recovery/media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)](https://learn.microsoft.com/en-us/azure/site-recovery/media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 [![](https://learn.microsoft.com/en-us/azure/site-recovery/media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)](https://learn.microsoft.com/en-us/azure/site-recovery/media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
-
 	- [Support matrix](https://learn.microsoft.com/en-us/azure/site-recovery/hyper-v-azure-support-matrix)
 - [Proximity Placement Groups](https://learn.microsoft.com/en-us/azure/site-recovery/how-to-enable-replication-proximity-placement-groups)
 	- Latency-sensitive workloads
