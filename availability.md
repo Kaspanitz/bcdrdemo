@@ -4,6 +4,7 @@
 - [The Azure Global Infrastructure](https://infrastructuremap.microsoft.com/explore)
 	- [Geographies](https://azure.microsoft.com/en-au/explore/global-infrastructure/geographies/#overview)
 	- [Regions](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview#regions)
+	- [Datacenter Tour](https://news.microsoft.com/stories/microsoft-datacenter-tour/)
 - [Azure Reliability](https://learn.microsoft.com/en-us/azure/reliability/?view=azuresql "Azure Reliability")
 	- [Region Pairs](https://learn.microsoft.com/en-us/azure/reliability/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies)
 	- [Availability Sets](https://learn.microsoft.com/en-us/azure/virtual-machines/availability-set-overview)
