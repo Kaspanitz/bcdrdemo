@@ -5,8 +5,12 @@
 
 `Maximum Tolerable Downtime (MTD):` Total downtime before significant impact to the business. The **required** recovery time.
 
+------------
+
 ### [Azure Backup](https://learn.microsoft.com/en-us/azure/backup/)
 ![](https://learn.microsoft.com/en-us/azure/backup/media/guidance-best-practices/azure-backup-architecture.png)
+
+------------
 
 #### Vaults (2)
 - [Recovery Services Vault](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview)
@@ -24,6 +28,8 @@
 	- Backup data for certain newer Azure Backup workloads e.g. Azure Disks, Azure Blobs, PostgreSQL
 	- Redundancy
 		- **LRS**, **ZRS**, **GRS**
+
+------------
 
 #### Security (6)
 - [Encryption](https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview#encryption-settings-in-the-recovery-services-vault) of data in transit and at rest
@@ -57,11 +63,15 @@
 		- Use of fewer private IPs.
 		[Key enhancements](https://learn.microsoft.com/en-us/azure/backup/backup-azure-private-endpoints-concept#key-enhancements)
 
+------------
+
 #### Tiers (2)
 - Standard
 - [Archive](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support)
 	- Backup Long-Term (monthly or yearly) retention points in the archive tier
 	- [Support matrix](https://learn.microsoft.com/en-us/azure/backup/archive-tier-support#support-matrix)
+
+------------
 
 #### [Backup Policy](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#backup-policy-considerations)
 1. [Schedule (when?)](https://learn.microsoft.com/en-us/azure/backup/guidance-best-practices#schedule-considerations)
@@ -71,6 +81,8 @@
 	- On-demand (not scheduled via backup policy)
 
 [Configure backup policy to automate vault-archive tier for Azure VMs, SQL Server/SAP HANA in Azure VMs]( https://azure.microsoft.com/en-au/updates/general-availability-smart-tiering-to-vaultarchive-tier-for-azure-backup/)
+
+------------
 
 #### [Supported Workloads (8+)](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
 - **[On-premises (3 options)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)**
@@ -175,6 +187,8 @@
 - **[Azure Database for PostgreSQL servers](https://learn.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql-support-matrix)**
 - **[[Private preview: Azure Kubernetes Service (AKS) Backup]](https://azure.microsoft.com/en-au/updates/private-preview-aks-backup/)**
 
+------------
+
 #### Azure Policy (4)
 - Compliance: [Auto-Enable Backup on VM creation](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup)
 - [Supported VM SKUs](https://learn.microsoft.com/en-us/azure/backup/backup-azure-policy-supported-skus)
@@ -184,6 +198,8 @@
 	- [Policy 2 - Configure backup on VMs with a given tag to an existing recovery services vault in the same location](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-2---configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location)
 	- [Policy 3 - Configure backup on VMs without a given tag to a new recovery services vault with a default policy](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-3---configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy)
 	- [Policy 4 - Configure backup on VMs with a given tag to a new recovery services vault with a default policy](https://learn.microsoft.com/en-us/azure/backup/backup-azure-auto-enable-backup#policy-4---configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy)
+
+------------
 
 #### Useful Links
 - [What is newly GA, in private/public preview?](https://azure.microsoft.com/en-au/updates/?query=backup&Page=2)
