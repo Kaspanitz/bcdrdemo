@@ -86,7 +86,7 @@
 		- App-consistent
 		- File system-consistent
 		- Crash-consistent
-	- [Quiesce applications using pre-post scripts](https://learn.microsoft.com/en-us/azure/backup/backup-azure-linux-database-consistent-enhanced-pre-post)
+	- [Database-consistent (Quiesce applications using pre-post scripts)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-linux-database-consistent-enhanced-pre-post)
 	- [Selective disk backup/restore](https://learn.microsoft.com/en-us/azure/backup/selective-disk-backup-restore)
 	- [Backup encrypted Azure VM](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)
 		- Storage service encryption (SSE) with platform-managed or customer-managed keys
