@@ -5,6 +5,8 @@
 
 `Maximum Tolerable Downtime (MTD):` Total downtime before significant impact to the business. The **required** recovery time.
 
+------------
+
 ### [Backup Center](https://learn.microsoft.com/en-us/azure/backup/backup-center-overview)
 - Unified management experience
 - [Govern](https://learn.microsoft.com/en-us/azure/backup/backup-center-govern-environment), [monitor](https://learn.microsoft.com/en-us/azure/backup/backup-center-monitor-operate), [report](https://learn.microsoft.com/en-us/azure/backup/backup-center-obtain-insights), and operate **Azure Backups** at scale 
