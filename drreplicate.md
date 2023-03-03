@@ -5,7 +5,9 @@
 
 `Maximum Tolerable Downtime (MTD):` Total downtime before significant impact to the business. The **required** recovery time.
 
-### Azure Site Recovery
+------------
+
+### [Azure Site Recovery](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-overview)
 
 #### Scenarios (9)
 - [Azure to Azure](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-how-to-enable-replication)
@@ -44,7 +46,9 @@
 	- Reduces networking complexity (use the same VNET, etc)
 - Site-to-Site Disaster Recovery ([VMware](https://learn.microsoft.com/en-us/azure/site-recovery/vmware-physical-secondary-disaster-recovery) and [Hyper-V](https://learn.microsoft.com/en-us/azure/site-recovery/site-to-site-deprecation))
 	- Deprecated
-	
+
+------------
+
 #### Features
 - [Automation](https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-powershell)
 	- Bicep/ARM/PowerShell for creation of Azure resources
@@ -117,6 +121,8 @@
 			- Drawback: DNS and cache entries may need to be updated resulting in downtime - use short TTL values to mitigate
 			- Can be useful to do subnet-level failovers i.e. subset of application - [example](https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-retain-ip-azure-vm-failover#resources-in-azure-isolated-app-failover)
 
+------------
+
 #### Best Practices
 - Generate csv file with target details like SKU, resource group, target network
 - Execute PowerShell script to enable replication and track progress
@@ -132,6 +138,8 @@
 - Perform Test failover of protected VMs to validate successful replication
 - Leverage Recovery Plans to orchestrate the entire application failover of web tier, middle tier and data tier to achieve low RTO
 - Run DR drills every 3 months to validate the RPO & RTO targets and meet the business and compliance needs
+
+------------
 
 #### Useful Links
 - [What is newly GA, in private/public preview?](https://azure.microsoft.com/en-au/updates/?query=site%20recovery)
