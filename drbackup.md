@@ -41,7 +41,9 @@
 	- **Backup Reader** - View all backup management operations. "Monitoring role"
 - [Multi-user authorization](https://learn.microsoft.com/en-us/azure/backup/multi-user-authorization-concept?tabs=backup-vault#how-does-mua-for-backup-work)
 	- Additional protection on Recovery Services vaults and Backup vaults. Azure Backup uses another Azure resource called the Resource Guard to ensure critical operations are performed only with applicable authorization. Resource Guard must be owned by a different user.
+
 [![](https://github.com/Kaspanitz/bcdr/blob/main/images/MUA.png)](https://github.com/Kaspanitz/bcdr/blob/main/images/MUA.png)
+
 - [Immutable vault (preview)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-immutable-vault-concept?tabs=recovery-services-vault)
 	- Blocks specific operations on the vault and its protected items.
 	- Disable/Enable/Enable and Lock (cannot be disabled)
