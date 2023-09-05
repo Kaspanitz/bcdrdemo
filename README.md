@@ -31,5 +31,4 @@
 		- [Blob (Versioning)](https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview)
 		- [Blob (Soft Delete)](https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-blob-overview)
 		- [Containers (Soft Delete)](https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-container-overview)
-
 - [Azure Business Continuity Guide (Guided Journey with Templates)](https://aka.ms/abcg)
