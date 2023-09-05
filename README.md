@@ -19,4 +19,17 @@
 	- [Backup Center](drbackupcenter.md)
 	- [Azure Backup](drbackup.md)
 	- [Azure Site Recovery](drreplicate.md)
-- BCDR Guided Journey with Templates (coming soon)
+	- Built-in Features (e.g., Replication, Backup/Restore, Export/Import, Soft Delete) e.g.,
+		- [Microsoft Entra ID (Soft Delete)](https://learn.microsoft.com/en-us/azure/active-directory/architecture/recover-from-deletions)
+		- [Azure App Service (Backup and Restore)](https://learn.microsoft.com/en-us/azure/app-service/manage-backup?tabs=portal)
+		- [Azure DNS (Import and Export)](https://learn.microsoft.com/en-us/azure/dns/dns-import-export)
+		- [Azure Service Bus (Geo-DR)](https://learn.microsoft.com/en-us/azure/service-bus-messaging/service-bus-geo-dr)
+		- [Azure SQL Database (Active Geo-replication)](https://learn.microsoft.com/en-us/azure/azure-sql/database/active-geo-replication-overview?view=azuresql)
+		- [Azure SQL Database (Automated Backups)](https://learn.microsoft.com/en-us/azure/azure-sql/database/automated-backups-overview?view=azuresql)
+		- [Azure SQL Database (Auto-failover Groups)](https://learn.microsoft.com/en-us/azure/azure-sql/database/auto-failover-group-sql-db?view=azuresql&tabs=azure-powershell)
+		- [Key Vault (Soft Delete)](https://learn.microsoft.com/en-us/azure/key-vault/general/soft-delete-change)
+		- [Blob (Versioning)](https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview)
+		- [Blob (Soft Delete)](https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-blob-overview)
+		- [Containers (Soft Delete)](https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-container-overview)
+
+- [Azure Business Continuity Guide (Guided Journey with Templates)](https://aka.ms/abcg)
