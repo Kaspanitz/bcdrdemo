@@ -15,7 +15,7 @@
 2. [Security (6)](security.md)
 3. [Tiers (2)](tiers.md)
 4. [Backup Policy](backuppolicy.md)
-5. [Workloads](workloads.md)
+5. [Workloads (8+)](workloads.md)
 6. [Azure Policy (4)](azurepolicy.md)
 
 #### Useful Links
