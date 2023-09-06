@@ -157,8 +157,7 @@
 		- How various types of backup (full, differential, etc) will be handled, if there is a failover to a secondary node, needs to be considered
 	- Also consider [SQL Server Managed Backup](https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-ver16) and Manual Backup 
 - **[Azure Files](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)**
-	- Snapshot-based
-	_No need to configure the storage replication type. Azure Files backup is snapshot-based, and no data is transferred to the vault. Snapshots are stored in the same Azure storage account as your backed-up file share._
+	- Snapshot-based: No need to configure the storage replication type. Azure Files backup is snapshot-based, and no data is transferred to the vault. Snapshots are stored in the same Azure storage account as your backed-up file share.
 	- Hourly or Daily Frequency
 	- `RPO: 4 hours` (hourly frequency)
 	- `RPO: 24 hours` (daily frequency)
