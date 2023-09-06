@@ -128,6 +128,10 @@
 			- Replace VM disk
 			- Restore item level (files/folders)
 			- Cross region restore
+			- [Cross subscription restore (GA: Aug 2023)](https://azure.microsoft.com/en-us/updates/generally-available-cross-subscription-restore-for-azure-virtual-machines/)
+				- To another subscription within the same tenant of the subscription where source VM is present
+				- Requires relevant permissions to restore in that secondary subscription
+				- Feature is only allowed if you have the Cross Subscription Restore property enabled for the Recovery Services vault
 - **[Azure Managed Disks](https://learn.microsoft.com/en-us/azure/backup/disk-backup-support-matrix)**
 	- Agentless (useful in highly secure environments where agents cannot be deployed)
 	- Incremental snapshots
