@@ -1,4 +1,7 @@
 ## [Supported Workloads (8+)](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
+
+------------
+
 - **[On-premises (3 options)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)**
 	- Windows (Workstation or Server) with MARS agent
 		- In the past often also used for Azure VMs e.g. to get three backups/day to vault instead of one backup/day `RPO of 8 hours vs. 24 hours`
@@ -11,6 +14,9 @@
 		- [MABS (Server, No System Center License, Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-protection-matrix)
 		- Linux support
 	- [Data backed up from Azure Backup Agent, DPM, and Azure Backup Server is compressed and encrypted before being transferred. With compression and encryption applied, the data in the vault is 30-40% smaller](https://learn.microsoft.com/en-us/azure/backup/backup-azure-backup-faq#why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup-)
+
+------------
+
 - **[Azure VMs](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-iaas)**
 	- Backup process takes a snapshot, data is transferred to a Recovery Services vault with no impact on production workloads
 	- Snapshot levels of [consistency](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction#snapshot-consistency):
@@ -49,6 +55,18 @@
 				- To another subscription within the same tenant of the subscription where source VM is present
 				- Requires relevant permissions to restore in that secondary subscription
 				- Feature is only allowed if you have the Cross Subscription Restore property enabled for the Recovery Services vault
+
+_Note: Azure VM backup options include 1. Azure VM Backup, Azure site Recovery, Azure Managed Disk Snapshot Backup and Azure Managed Disk Image Backup_
+
+Things to consider when creating images versus snapshots:
+- Consider images. With Azure managed disks, you can take an image of a generalized virtual machine that's been deallocated. The image includes all of the disks attached to the virtual machine. You can use the image to create a virtual machine that includes all of the disks.
+
+- Consider snapshots. A snapshot is a copy of a disk at the point in time the snapshot is taken. The snapshot applies to one disk only, and doesn't have awareness of any disk other than the one it contains. Snapshot backups are problematic for configurations that require the coordination of multiple disks, such as striping. In this case, the snapshots need to coordinate with each other, but this functionality isn't currently supported.
+
+- Consider operating disk backups. If you have a virtual machine with only one disk (the operating system disk), you can take a snapshot or an image of the disk. You can create a virtual machine from either a snapshot or an image.
+
+------------
+
 - **[Azure Managed Disks](https://learn.microsoft.com/en-us/azure/backup/disk-backup-support-matrix)**
 	- Agentless (useful in highly secure environments where agents cannot be deployed)
 	- Incremental snapshots
@@ -60,6 +78,9 @@
 	- Shared disk support
 	- Restore
 		- Only supports Alternate-Location Recovery (ALR) currently (Original-Location Recovery (OLR) is not supported)
+
+------------
+
 - **[SQL Server in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sql-support-matrix)**
 	- `Full backup one/day (at most) scheduled`
 	- `Full backup three/day on-demand` (hard limit of 9 to retry failed)
@@ -77,6 +98,9 @@
 		- Considerations apply for the region, subscription, primary and secondary replicas
 		- How various types of backup (full, differential, etc) will be handled, if there is a failover to a secondary node, needs to be considered
 	- Also consider [SQL Server Managed Backup](https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-ver16) and Manual Backup 
+
+------------
+
 - **[Azure Files](https://learn.microsoft.com/en-us/azure/backup/azure-file-share-support-matrix)**
 	- Snapshot-based: No need to configure the storage replication type. Azure Files backup is snapshot-based, and no data is transferred to the vault. Snapshots are stored in the same Azure storage account as your backed-up file share.
 	- Hourly or Daily Frequency
@@ -95,6 +119,9 @@
 	- Restore
 		- Full share restore
 		- Item level restore
+
+------------
+
 - **[Azure Blobs](https://learn.microsoft.com/en-us/azure/backup/blob-backup-support-matrix)**
 	- Backup Center integration for single pane of glass
 	- Managed, local data protection
@@ -104,6 +131,17 @@
 	- Continuous backup, no need to schedule
 	- `Retention: 1-360 days or 1-51 weeks or 1-11 months`
 	- [Point-in-time restore](https://learn.microsoft.com/en-us/azure/storage/blobs/point-in-time-restore-overview)
+
+------------
+
 - **[SAP HANA databases in Azure VMs](https://learn.microsoft.com/en-us/azure/backup/sap-hana-backup-support-matrix)**
+
+------------
+
 - **[Azure Database for PostgreSQL servers](https://learn.microsoft.com/en-us/azure/backup/backup-azure-database-postgresql-support-matrix)**
+
+------------
+
 - **[[Private preview: Azure Kubernetes Service (AKS) Backup]](https://azure.microsoft.com/en-au/updates/private-preview-aks-backup/)**
+
+------------
