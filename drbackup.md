@@ -86,10 +86,12 @@
 
 #### [Supported Workloads (8+)](https://learn.microsoft.com/en-us/azure/backup/backup-overview#what-can-i-back-up)
 - **[On-premises (3 options)](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix#on-premises-backup-support)**
-	- Windows machine with MARS agent
+	- Windows (Workstation or Server) with MARS agent
 		- In the past often also used for Azure VMs e.g. to get three backups/day to vault instead of one backup/day `RPO of 8 hours vs. 24 hours`
 		([Multiple backups per day for Azure VMs is now GA](https://azure.microsoft.com/en-us/updates/multiple-backups-per-day/))
 		- Linux is not supported
+		- The MARS agent doesn't require a separate backup server
+		- The MARS agent isn't application-aware. You can restore files and folders from backups, or do a volume-level restore
 	- [DPM/MABS](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm)
 		- [DPM (Server, System Center License, Tape/Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-dpm-introduction)
 		- [MABS (Server, No System Center License, Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-protection-matrix)
