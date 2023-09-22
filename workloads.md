@@ -18,7 +18,10 @@
 ------------
 
 - **[Azure VMs](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-iaas)**
-	- Backup process takes a snapshot, data is transferred to a Recovery Services vault with no impact on production workloads
+	- Azure VM backup happens in two phases:
+		- In phase 1, the snapshot taken is stored along with the disk. This is referred to as `snapshot tier`. Snapshot tier restores are faster (than restore from vault) because they eliminate the wait time for snapshots to copy to the vault before triggering the restore. So restore from the snapshot tier is also referred as Instant Restore.
+		- In phase 2, the snapshot is transferred and stored in the vault managed by the Azure Backup service. This is referred to as `vault tier`.
+	- As the backup process takes a snapshot, data is transferred to a Recovery Services vault with no impact on production workloads
 	- Snapshot levels of [consistency](https://learn.microsoft.com/en-us/azure/backup/backup-azure-vms-introduction#snapshot-consistency):
 		- App-consistent
 		- File system-consistent
