@@ -9,11 +9,12 @@
 		- Linux is not supported
 		- The MARS agent doesn't require a separate backup server
 		- The MARS agent isn't application-aware. You can restore files and folders from backups, or do a volume-level restore
-	- [DPM/MABS](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm)
+	- [DPM or MABS](https://learn.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm)
 		- [DPM (Server, System Center License, Tape/Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-azure-dpm-introduction)
 		- [MABS (Server, No System Center License, Azure)](https://learn.microsoft.com/en-us/azure/backup/backup-mabs-protection-matrix)
 		- Linux support
-	- [Data backed up from Azure Backup Agent, DPM, and Azure Backup Server is compressed and encrypted before being transferred. With compression and encryption applied, the data in the vault is 30-40% smaller](https://learn.microsoft.com/en-us/azure/backup/backup-azure-backup-faq#why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup-)
+
+Note: [Data backed up from Azure Backup Agent, DPM, and Azure Backup Server is compressed and encrypted before being transferred. With compression and encryption applied, the data in the vault is 30-40% smaller](https://learn.microsoft.com/en-us/azure/backup/backup-azure-backup-faq#why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup-)
 
 ------------
 
