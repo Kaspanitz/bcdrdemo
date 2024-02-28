@@ -146,6 +146,6 @@ Things to consider when creating images versus snapshots:
 
 ------------
 
-- **[[Private preview: Azure Kubernetes Service (AKS) Backup]](https://azure.microsoft.com/en-au/updates/private-preview-aks-backup/)**
+- **[Azure Kubernetes Service Backup](https://learn.microsoft.com/en-us/azure/backup/azure-kubernetes-service-backup-overview)**
 
 ------------
