@@ -3,11 +3,13 @@
 
 - [The Azure Global Infrastructure](https://infrastructuremap.microsoft.com/explore)
 	- [Geographies](https://azure.microsoft.com/en-au/explore/global-infrastructure/geographies/#overview)
-	- [Regions](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview#regions) minimum 300 miles (483 kilometers) where possible
+	- [Regions](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview#regions)
+ 		- Minimum 300 miles (483 kilometers) where possible
 	- [Datacenter Tour](https://news.microsoft.com/stories/microsoft-datacenter-tour/)
 - [Azure Reliability](https://learn.microsoft.com/en-us/azure/reliability/?view=azuresql "Azure Reliability")
 	- [Region Pairs](https://learn.microsoft.com/en-us/azure/reliability/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies)
 	- [Availability Sets](https://learn.microsoft.com/en-us/azure/virtual-machines/availability-set-overview)
+ 		- Recommendation is to use VMSS with flexible orchestration where possible [reference](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/overview)
 	- [Availability Zones](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview#availability-zones)
 	- [Subscriptions](https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview#availability-zones) and [checkZonePeers](https://learn.microsoft.com/en-us/rest/api/resources/subscriptions/check-zone-peers)
 	- [Infographic](https://azure.microsoft.com/mediahandler/files/resourcefiles/infographic-reliability-with-microsoft-azure/InfographicRC2.pdf)
